@@ -1,10 +1,18 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { about, site, socials } from "@/data/portfolio";
 import { ArrowUp, SocialIcon } from "./icons";
 
 export function SiteFooter() {
+  const pathname = usePathname();
+
+  if (pathname !== "/") return null;
+
   return (
-    <footer className="border-t border-line/70">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-6 pt-7 pb-20 sm:flex-row sm:items-end sm:justify-between sm:px-8 sm:pb-20 lg:px-10">
+    <footer className="mt-8">
+      <div className="content-shell">
+      <div className="flex flex-col gap-6 border-t border-line/80 pt-7 pb-24 sm:flex-row sm:items-end sm:justify-between">
         <div className="max-w-xl">
           <p className="text-sm italic text-foreground/80">
             &ldquo;{about.quote}&rdquo;
@@ -33,13 +41,14 @@ export function SiteFooter() {
           <span aria-hidden className="h-4 w-px bg-line" />
 
           <a
-            href="#top"
+            href="#page-top"
             className="group inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.16em] text-muted transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
           >
             Back to top
             <ArrowUp className="size-3.5 transition-transform duration-300 group-hover:-translate-y-0.5" />
           </a>
         </div>
+      </div>
       </div>
     </footer>
   );

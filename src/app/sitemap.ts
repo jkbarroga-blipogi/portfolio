@@ -1,12 +1,10 @@
 import type { MetadataRoute } from "next";
-import { site } from "@/data/portfolio";
+import { nav, site } from "@/data/portfolio";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: site.url,
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-  ];
+  return [{ href: "/" }, ...nav].map((item) => ({
+    url: new URL(item.href, site.url).href,
+    changeFrequency: "monthly",
+    priority: item.href === "/" ? 1 : 0.8,
+  }));
 }

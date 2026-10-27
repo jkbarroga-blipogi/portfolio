@@ -26,14 +26,16 @@ export const site = {
   portrait: "/portrait.jpg",
   yato: "/yato.jpg",
   tagline:
-    "I'm a second-year BSIT student at Naga College Foundation, building small, real projects with React, PHP and NestJS — and looking for a team where I can keep learning.",
+    "I enjoy trying new things, experimenting with vibe coding, and bringing ideas to life through small projects. I'm always eager to learn more about programming and grow as a developer.",
 };
 
 export const nav = [
-  { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
-  { label: "Education", href: "#education" },
-  { label: "Contact", href: "#contact" },
+  { label: "Resume", href: "/resume" },
+  { label: "Projects", href: "/projects" },
+  { label: "About", href: "/about" },
+  { label: "Education", href: "/education" },
+  { label: "Stack", href: "/stack" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export type SocialName = "github" | "facebook" | "linkedin" | "x" | "mail";
@@ -172,16 +174,14 @@ export type Education = {
   period: string;
   location: string;
   description: string;
-  status?: string;
 };
 
 export const education: Education[] = [
   {
     program: "BS Information Technology",
     detail: "2nd year undergraduate",
-    period: "In progress",
+    period: "Current in",
     location: "Naga College Foundation",
-    status: "Current",
     description:
       "Building the fundamentals — programming, data structures, databases, and web development — through coursework at Naga College Foundation and hands-on projects. This is the base I'm working from, and I'm in no rush to skip it.",
   },

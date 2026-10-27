@@ -2,6 +2,7 @@ import Image from "next/image";
 import { projects, site, type Project } from "@/data/portfolio";
 import { ArrowRight, ArrowUpRight } from "./icons";
 import { Reveal } from "./reveal";
+import { SectionHeading } from "./section-heading";
 
 const methodTone: Record<string, string> = {
   GET: "text-sky-700 dark:text-sky-400",
@@ -24,7 +25,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             src={project.image}
             alt={`${project.title} project preview`}
             fill
-            sizes="(min-width: 1280px) 25vw, (min-width: 640px) 50vw, 100vw"
+            sizes="(min-width: 1360px) 474px, (min-width: 1280px) calc((100vw - 412px) / 2), (min-width: 1024px) calc((100vw - 380px) / 2), (min-width: 640px) calc((100vw - 156px) / 2), calc(100vw - 76px)"
             className="object-cover object-left-top transition-transform duration-700 ease-out group-hover:scale-[1.035]"
           />
         ) : (
@@ -115,27 +116,22 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   );
 }
 
-export function Projects() {
+export function Projects({ standalone = false }: { standalone?: boolean }) {
   return (
     <section
       id="projects"
       aria-labelledby="projects-heading"
-      className="relative border-t border-line/70 py-10 sm:py-14"
+      className="portfolio-section"
     >
-      <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
+      <div className="content-shell">
         <Reveal>
-          <div className="flex flex-col gap-3 xl:flex-row xl:items-end xl:justify-between xl:gap-12">
-            <h2
-              id="projects-heading"
-              className="text-2xl font-medium tracking-[-0.035em] sm:text-[1.7rem]"
-            >
-              Things I&apos;ve built while learning.
-            </h2>
-            <p className="max-w-xl text-sm leading-6 text-muted">
-              Four real projects — three live sites and one backend API. No
-              client work or invented metrics, just what I&apos;ve built so far.
-            </p>
-          </div>
+          <SectionHeading
+            id="projects-heading"
+            title="Projects"
+            description="Things I've built while learning. Four real projects — three live sites and one backend API."
+            href="/projects"
+            standalone={standalone}
+          />
         </Reveal>
 
         <div className="mt-7 grid gap-5 sm:grid-cols-2">

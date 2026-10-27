@@ -1,25 +1,22 @@
+import Link from "next/link";
 import { about } from "@/data/portfolio";
 import { ArrowUpRight } from "./icons";
 import { Reveal } from "./reveal";
+import { SectionHeading } from "./section-heading";
 
-export function About() {
+export function About({ standalone = false }: { standalone?: boolean }) {
   return (
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="relative border-t border-line/70 py-10 sm:py-14"
+      className="portfolio-section"
     >
-      <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
+      <div className="content-shell">
         <Reveal>
+          <SectionHeading id="about-heading" title="About" description="Still learning. Already building." href="/about" standalone={standalone} />
           <div className="grid gap-8 xl:grid-cols-2 xl:gap-12">
             <div className="max-w-md">
-              <h2
-                id="about-heading"
-                className="text-2xl font-medium tracking-[-0.035em] sm:text-[1.7rem]"
-              >
-                Still learning. Already building.
-              </h2>
-              <p className="mt-4 text-sm leading-6 text-muted">{about.lead}</p>
+              <p className="text-sm leading-7 text-muted">{about.lead}</p>
 
               <blockquote className="mt-6 border-l border-accent/40 pl-4">
                 <p className="text-[15px] italic leading-6 text-foreground/80">
@@ -48,13 +45,13 @@ export function About() {
                 ))}
               </dl>
 
-              <a
-                href="#contact"
+              <Link
+                href="/contact"
                 className="group mt-6 inline-flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
                 Say hello
                 <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
+              </Link>
             </div>
           </div>
         </Reveal>

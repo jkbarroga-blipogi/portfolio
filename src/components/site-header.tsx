@@ -1,11 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { nav, site, socials } from "@/data/portfolio";
 import { ArrowUpRight, Close, Menu, SocialIcon } from "./icons";
 import { ThemeToggle } from "./theme-toggle";
+import { HomeLink } from "./home-link";
 
 export function SiteHeader() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -84,11 +88,9 @@ export function SiteHeader() {
             : "border-b border-transparent"
         }`}
       >
-        <div className="mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between gap-4 px-6 sm:px-8 lg:px-10">
-          <a
-            href="#top"
+        <div className="content-shell flex h-16 items-center justify-between gap-4">
+          <HomeLink
             className="group flex items-center gap-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-            aria-label={`${site.name} — back to top`}
           >
             <span className="font-mono text-[13px] font-semibold tracking-[0.16em] transition-colors group-hover:text-accent">
               {site.initials}
@@ -97,17 +99,18 @@ export function SiteHeader() {
               aria-hidden
               className="size-1 rounded-full bg-accent transition-transform duration-300 group-hover:scale-125"
             />
-          </a>
+          </HomeLink>
 
           <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
             {nav.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-md px-2.5 py-2 text-[13px] text-muted transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                aria-current={pathname === item.href ? "page" : undefined}
+                className={`rounded-md px-2 py-2 text-xs transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${pathname === item.href ? "bg-surface text-foreground" : "text-muted"}`}
               >
-                {item.label}
-              </a>
+                <span className={item.href === "/resume" ? "section-title" : undefined}>{item.label}</span>
+              </Link>
             ))}
           </nav>
 
@@ -136,7 +139,7 @@ export function SiteHeader() {
         aria-label="Site menu"
         aria-hidden={!open}
         inert={!open}
-        className={`fixed inset-0 z-50 flex flex-col bg-background transition-all duration-300 md:hidden ${
+        className={`portfolio-pattern fixed inset-0 z-50 flex flex-col bg-background transition-all duration-300 md:hidden ${
           open ? "visible opacity-100" : "invisible opacity-0"
         }`}
       >
@@ -160,30 +163,28 @@ export function SiteHeader() {
 
         <nav aria-label="Mobile" className="flex-1 overflow-y-auto px-6 py-10">
           <div className="flex min-h-full flex-col justify-center">
-            {nav.map((item, index) => (
-              <a
+            {nav.map((item) => (
+              <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="group flex items-baseline gap-4 border-t border-line/70 py-5 last:border-b focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                aria-current={pathname === item.href ? "page" : undefined}
+                className={`group flex items-baseline gap-4 border-t border-line/70 py-4 last:border-b focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${pathname === item.href ? "text-accent" : "text-foreground"}`}
               >
-                <span className="font-mono text-[10px] text-accent">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span className="text-2xl font-medium tracking-[-0.03em] transition-colors group-hover:text-accent">
+                <span className={`${item.href === "/resume" ? "section-title" : "font-mono font-medium tracking-[-0.03em]"} text-xl transition-colors group-hover:text-accent`}>
                   {item.label}
                 </span>
-              </a>
+              </Link>
             ))}
 
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               onClick={() => setOpen(false)}
               className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               Get in touch
               <ArrowUpRight className="size-4" />
-            </a>
+            </Link>
           </div>
         </nav>
 

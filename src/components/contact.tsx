@@ -1,6 +1,7 @@
 import { contactBlurb, site, type SocialName } from "@/data/portfolio";
 import { ArrowUpRight, SocialIcon } from "./icons";
 import { Reveal } from "./reveal";
+import { SectionHeading } from "./section-heading";
 
 type ContactLink = {
   label: string;
@@ -34,23 +35,20 @@ const contactLinks: ContactLink[] = [
   },
 ];
 
-export function Contact() {
+export function Contact({ standalone = false }: { standalone?: boolean }) {
   return (
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className="relative border-t border-line/70 py-10 sm:py-14"
+      className="portfolio-section"
     >
-      <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:items-start lg:gap-20">
+      <div className="content-shell">
+        <Reveal>
+          <SectionHeading id="contact-heading" title="Contact" description="Let's work together, exchange ideas, or just say hello." href="/contact" standalone={standalone} />
+        </Reveal>
+        <div className="grid gap-8 xl:grid-cols-2 xl:items-start xl:gap-12">
           <Reveal>
-            <h2
-              id="contact-heading"
-              className="max-w-xl text-[clamp(2.2rem,4vw,3.6rem)] leading-[1.08] font-light tracking-[-0.04em]"
-            >
-              Let&apos;s work together.
-            </h2>
-            <p className="mt-4 max-w-lg text-sm leading-7 text-muted">
+            <p className="max-w-lg text-sm leading-7 text-muted">
               {contactBlurb}
             </p>
           </Reveal>

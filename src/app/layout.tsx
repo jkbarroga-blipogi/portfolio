@@ -68,17 +68,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className="flex min-h-full flex-col bg-background text-foreground">
+      <body id="page-top" className="portfolio-pattern flex min-h-full flex-col bg-background text-foreground">
         <a href="#main" className="skip-link">
           Skip to content
         </a>
         <SiteHeader />
         <Sidebar />
-        <div className="lg:ml-64 xl:ml-72">
-        <main id="main" tabIndex={-1} className="flex-1 focus:outline-none">
-          {children}
-        </main>
-        <SiteFooter />
+        <div className="flex min-h-dvh flex-col lg:ml-56 xl:ml-60">
+          <main id="main" tabIndex={-1} className="flex-1 focus:outline-none">
+            {children}
+          </main>
+          <SiteFooter />
         </div>
         <PortfolioChat />
         <noscript>
