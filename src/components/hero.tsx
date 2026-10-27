@@ -8,8 +8,8 @@ export function Hero() {
     <section id="top" aria-labelledby="hero-name" className="pt-28 pb-12 sm:pb-16 lg:pt-16">
       <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
         <LivePortrait />
-        <h1 id="hero-name" className="mt-7 text-4xl font-semibold tracking-[-0.045em] sm:text-5xl">{site.name}</h1>
-        <p className="mt-3 text-base text-muted sm:text-lg">Student Web Developer</p>
+        <h1 id="hero-name" className="mt-7 font-mono text-3xl font-medium tracking-[-0.045em] sm:text-4xl">{site.name}</h1>
+        <p className="mt-3 font-mono text-[11px] tracking-[0.05em] text-muted">Student Developer</p>
         <p className="mt-6 max-w-2xl text-[15px] leading-7 text-muted">I&apos;m a second-year BSIT student at Naga College Foundation, building web applications with React, PHP, and NestJS.</p>
         <p className="mt-3 max-w-2xl text-[15px] leading-7 text-muted">I learn by turning ideas into real projects. From a school document service to a shelter API, each build is a chance to understand something new.</p>
         <div className="mt-6 flex flex-wrap gap-3">{socials.map((social) => <a key={social.label} href={social.href} className="inline-flex items-center gap-2 rounded-lg border border-line px-3 py-2 text-xs text-muted transition-colors hover:bg-surface hover:text-foreground"><SocialIcon name={social.icon} className="size-3.5" />{social.label}<ArrowUpRight className="size-3" /></a>)}</div>

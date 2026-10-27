@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+main h2 {
+  font-family: var(--font-geist-pixel-square), var(--font-geist-mono), monospace;
+  font-weight: 500;
+  letter-spacing: normal;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {

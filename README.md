@@ -43,7 +43,7 @@ The floating chat opens a local portfolio FAQ guide. It answers immediately usin
 ### Replace the portraits
 
 - **Your photo** — `public/portrait.jpg`. Replace the file (keeping the name) or point `portrait` in `site` at a different file in `public/`.
-- **Yato artwork** — `public/yato.jpg`. The circular avatar auto-previews Yato once, previews on hover, and pins on click/tap. The chat panel also uses the artwork.
+- **Yato artwork** — `public/yato.jpg`. The large square portrait auto-previews Yato once, previews on hover, and pins on click/tap. The chat panel also uses the artwork.
 
 Both images are cropped with `object-cover`; keep your face near the upper-center of the frame and Yato centered for the cleanest circle crop.
 

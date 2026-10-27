@@ -43,14 +43,14 @@ export function LivePortrait() {
       aria-label={pinned ? "Show Kyle's photo" : "Show the Yato portrait"}
       title="Hover or tap to switch portraits"
       onClick={togglePortrait}
-      className="live-avatar group relative size-24 shrink-0 overflow-hidden rounded-full border border-line bg-surface focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:size-28"
+      className="live-avatar group relative size-60 max-w-full shrink-0 overflow-hidden rounded border border-line bg-surface focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent sm:size-72"
     >
       <Image
         src={site.portrait}
         alt=""
         fill
         priority
-        sizes="112px"
+        sizes="(min-width: 640px) 288px, 240px"
         className="live-avatar__photo object-cover"
       />
       <Image
@@ -58,7 +58,7 @@ export function LivePortrait() {
         alt=""
         fill
         loading="eager"
-        sizes="112px"
+        sizes="(min-width: 640px) 288px, 240px"
         className="live-avatar__yato object-cover"
       />
 
