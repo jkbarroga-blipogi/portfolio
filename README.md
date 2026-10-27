@@ -134,6 +134,6 @@ src/
 
 The page is prerendered, but the chat needs a Node.js runtime and outbound network access for `/api/chat`.
 
-**Vercel:** push to GitHub, import the repo at [vercel.com/new](https://vercel.com/new), and deploy. Set `site.url` to your production domain for correct canonical and sitemap URLs. It is currently a placeholder (`https://kylebarroga.dev`). Add `GROQ_API_KEY` or `GEMINI_API_KEY` under Project Settings → Environment Variables if you want to avoid the 30-second anonymous limit.
+**Vercel:** deployed at [portfolio-five-neon-iqrp7ex65q.vercel.app](https://portfolio-five-neon-iqrp7ex65q.vercel.app). Keep `site.url` aligned with the production domain for correct canonical and sitemap URLs. Add `GROQ_API_KEY` or `GEMINI_API_KEY` under Project Settings → Environment Variables if you want to avoid the 30-second anonymous limit; provider quotas still apply.
 
 **Other hosts:** `npm run build` then `npm run start` on any Node.js host. No database is required, but the host must allow server-side `fetch` requests to the AI provider.

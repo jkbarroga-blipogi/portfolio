@@ -22,7 +22,7 @@ export const site = {
   availability: "Open to internships & collaborations",
   description:
     "Second-year BSIT student at Naga College Foundation, learning by building real projects with React, PHP and NestJS.",
-  url: "https://kylebarroga.dev", // TODO: replace with the real deployed domain
+  url: "https://portfolio-five-neon-iqrp7ex65q.vercel.app",
   portrait: "/portrait.jpg",
   yato: "/yato.jpg",
   tagline:
