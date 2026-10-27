@@ -64,7 +64,7 @@ export function Education() {
         </div>
 
         <Reveal delay={80}>
-          <div className="mt-10">
+          <div id="stack" className="mt-10 scroll-mt-20">
             <div className="flex items-end justify-between gap-4 border-b border-line/70 pb-3">
               <h3 className="text-xl font-medium tracking-[-0.02em]">
                 Technologies

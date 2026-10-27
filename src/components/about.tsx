@@ -11,7 +11,7 @@ export function About() {
     >
       <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-8 lg:px-10">
         <Reveal>
-          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)_minmax(0,0.8fr)] xl:gap-14 2xl:gap-20">
+          <div className="grid gap-8 xl:grid-cols-2 xl:gap-12">
             <div className="max-w-md">
               <h2
                 id="about-heading"
@@ -36,8 +36,8 @@ export function About() {
               </div>
             </div>
 
-            <div className="lg:col-span-2 xl:col-span-1">
-              <dl className="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line/70 pt-5 sm:grid-cols-3 xl:grid-cols-2">
+            <div className="xl:col-span-2">
+              <dl className="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line/70 pt-5 sm:grid-cols-3">
                 {about.facts.map((fact) => (
                   <div key={fact.label}>
                     <dt className="font-mono text-[8px] uppercase tracking-[0.18em] text-muted">

@@ -4,6 +4,7 @@ import "./globals.css";
 import { PortfolioChat } from "@/components/portfolio-chat";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { Sidebar } from "@/components/sidebar";
 import { site } from "@/data/portfolio";
 
 const geistSans = Geist({
@@ -49,7 +50,7 @@ export const viewport: Viewport = {
   interactiveWidget: "resizes-content",
   colorScheme: "light dark",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f8f7f3" },
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
     { media: "(prefers-color-scheme: dark)", color: "#0a0a0b" },
   ],
 };
@@ -71,10 +72,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <SiteHeader />
+        <Sidebar />
+        <div className="lg:ml-64 xl:ml-72">
         <main id="main" tabIndex={-1} className="flex-1 focus:outline-none">
           {children}
         </main>
         <SiteFooter />
+        </div>
         <PortfolioChat />
         <noscript>
           <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>

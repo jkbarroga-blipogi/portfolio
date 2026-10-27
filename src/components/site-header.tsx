@@ -78,7 +78,7 @@ export function SiteHeader() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${
+        className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 lg:hidden ${
           scrolled || open
             ? "border-b border-line/70 bg-background/85 backdrop-blur-xl"
             : "border-b border-transparent"

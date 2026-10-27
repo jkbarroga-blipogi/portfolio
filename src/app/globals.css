@@ -3,11 +3,11 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #f8f7f3;
+  --background: #fafafa;
   --foreground: #161615;
   --muted: #6f706a;
   --line: #e4e2db;
-  --card: #fffefa;
+  --card: #ffffff;
   --surface: #efede7;
   --accent: #d9552b;
   --accent-foreground: #fffaf7;

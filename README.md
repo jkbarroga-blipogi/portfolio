@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-A single-page student portfolio built with Next.js 16, React 19, TypeScript and Tailwind CSS 4. A wide, responsive editorial layout with light/dark themes, scroll reveals, a portrait that flips to Yato, and an AI portfolio assistant. No UI dependencies — every component is local and editable.
+A single-page student portfolio built with Next.js 16, React 19, TypeScript and Tailwind CSS 4. A responsive sidebar layout with light/dark themes, scroll reveals, a portrait that flips to Yato, and a local portfolio FAQ guide. No UI dependencies — every component is local and editable.
 
 The content is written honestly for a second-year BSIT student at Naga College Foundation in Naga City: real projects, current skills, and what is still being learned.
 
@@ -38,25 +38,7 @@ The projects point at real live sites and GitHub repositories. If you add a proj
 
 ### Portfolio assistant
 
-The floating chat button opens an AI assistant. Messages are sent to the server-side route at `src/app/api/chat/route.ts`, which adds portfolio facts to a system prompt and calls an OpenAI-compatible model. The client keeps the conversation history, shows a typing state, and falls back to a small set of local answers if the network request fails.
-
-The default provider is Pollinations' keyless endpoint (`openai-fast`). Its free anonymous tier allows **one reply every 30 seconds per IP**, so the chat shows a countdown and a quick local answer when that limit is hit. For unlimited chatting, add a free API key:
-
-```bash
-# .env.local — pick one
-GROQ_API_KEY=gsk_...        # free at console.groq.com/keys
-GEMINI_API_KEY=...          # free at aistudio.google.com/apikey
-```
-
-Or point it at any OpenAI-compatible endpoint:
-
-```bash
-AI_BASE_URL=https://your-provider.example/v1/chat/completions
-AI_API_KEY=...
-AI_MODEL=your-model
-```
-
-Restart `npm run dev` (or `npm run start`) after changing environment variables. With a key, replies are not subject to the 30-second free-tier limit. The local keyword answers in `getReply()` remain as the offline fallback; quick-question chips are defined in `quickPrompts`.
+The floating chat opens a local portfolio FAQ guide. It answers immediately using portfolio data and topic matching in `src/components/portfolio-chat.tsx`. Visitors can select question chips or type questions about projects, skills, school, contact details, and Yato. Unknown questions receive an honest fallback. No AI provider, API key, network request, or cooldown is used. Conversation history lasts for the current page session.
 
 ### Replace the portraits
 
@@ -88,7 +70,7 @@ The accent color and all surfaces flow from the CSS variables, so changing `--ac
 
 - Scroll reveals use a small `IntersectionObserver` wrapper (`Reveal`).
 - The hero avatar defaults to the photo. It auto-previews Yato once after loading, previews Yato on hover, and pins on click, tap, Enter or Space. The switch uses a cyan sweep, a soft flash and a clip-path reveal. The `夜` badge hints at the artwork without giving it away.
-- The chat panel has a short entrance animation, shows a typing indicator while the AI responds, and remembers the conversation for follow-up questions.
+- The chat panel has a short entrance animation and immediately displays saved portfolio answers.
 - Light/dark switching uses the View Transitions API for a circular reveal, with an instant fallback when the API or motion preference is unavailable.
 - `prefers-reduced-motion` disables the avatar transition, blobs, scroll reveals and theme reveal.
 
@@ -101,7 +83,6 @@ src/
 │   ├── page.tsx          # section order
 │   ├── globals.css       # theme tokens, utilities, animation
 │   ├── icon.svg          # favicon
-│   ├── api/chat/route.ts # server-side AI proxy
 │   ├── robots.ts
 │   └── sitemap.ts
 ├── components/
@@ -111,7 +92,8 @@ src/
 │   ├── about.tsx
 │   ├── education.tsx     # timeline + technologies
 │   ├── contact.tsx       # email, Facebook and GitHub cards
-│   ├── portfolio-chat.tsx # floating AI assistant
+│   ├── portfolio-chat.tsx # local portfolio FAQ
+│   ├── sidebar.tsx       # desktop navigation and contact links
 │   ├── site-header.tsx   # sticky nav + mobile menu
 │   ├── site-footer.tsx
 │   ├── theme-toggle.tsx  # view-transition theme switch
@@ -132,8 +114,8 @@ src/
 
 ## Deploy
 
-The page is prerendered, but the chat needs a Node.js runtime and outbound network access for `/api/chat`.
+The page is prerendered. The chat runs entirely in the browser without an API.
 
-**Vercel:** deployed at [portfolio-five-neon-iqrp7ex65q.vercel.app](https://portfolio-five-neon-iqrp7ex65q.vercel.app). Keep `site.url` aligned with the production domain for correct canonical and sitemap URLs. Add `GROQ_API_KEY` or `GEMINI_API_KEY` under Project Settings → Environment Variables if you want to avoid the 30-second anonymous limit; provider quotas still apply.
+**Vercel:** deployed at [portfolio-five-neon-iqrp7ex65q.vercel.app](https://portfolio-five-neon-iqrp7ex65q.vercel.app). Keep `site.url` aligned with the production domain for correct canonical and sitemap URLs. No environment variables are required.
 
-**Other hosts:** `npm run build` then `npm run start` on any Node.js host. No database is required, but the host must allow server-side `fetch` requests to the AI provider.
+**Other hosts:** `npm run build` then `npm run start` on any Node.js host. No database or external AI service is required.
